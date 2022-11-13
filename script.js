@@ -1,7 +1,8 @@
+const searchInput = document.querySelector(".search");
+
 function setup() {
-  const allEpisodes = getAllEpisodes();
-  console.log(allEpisodes);
-  makePageForEpisodes(allEpisodes);
+  let url = "https://api.tvmaze.com/shows/82/episodes";
+  fetch(url).then(rep=> rep.json()).then(data=> makePageForEpisodes(data));
 }
 
 function makePageForEpisodes(episodeList) {
@@ -12,14 +13,34 @@ function makePageForEpisodes(episodeList) {
     const pHeader = document.createElement("p");
     const img = document.createElement("img");
     const pSum = document.createElement("p");
+    dive.id = "containerStyle";
     img.src = episodeList[i].image.medium; // display medium Img
     pHeader.innerText = `${episodeList[i].name} - S01E0${i + 1} `; // display heder and number of episod
     pHeader.id="header-episode";
     pSum.innerHTML = episodeList[i].summary; // display summary
-    body.appendChild(dive)
     dive.appendChild(pHeader);
     dive.appendChild(img);
     dive.appendChild(pSum);
+    body.appendChild(dive);
+
+    let cardList = [...document.querySelectorAll("#containerStyle")]
+    searchText(cardList);
+  
   }}
+
+  function searchText(cardList) {
+  let searchInput = document.querySelector(".search")
+  searchInput.addEventListener("keyup", (event) => {
+  let searchValue = event.target.value.toLowerCase();
+  cardList.forEach((item) => {
+    let textValue = item.innerText.toLowerCase();
+    if (textValue.includes(searchValue)){
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  })
+  })
+  }
 
 window.onload = setup;

@@ -1,17 +1,12 @@
-#root {
+#container {
   background-color: rgb(248, 246, 246);
   display: grid;
   gap: 12px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-
-#contenar {
-  background-color: rgb(243, 250, 255);
-  padding: 50px;
-  border: 1px black solid;
-  width: 300px;
+#containerStyle{
+  background-color: rgb(248, 246, 246);
 }
-
 #header-episode {
   text-align: center;
   padding-top: 30px;
