@@ -25,11 +25,14 @@ function makePageForEpisodes(episodeList) {
 
     let cardList = [...document.querySelectorAll("#containerStyle")]
     searchText(cardList);
-  
+    let numberOfEpisodes = document.querySelector(".numberOfEpisodes");
+    numberOfEpisodes.innerText = `Search in ${cardList.length} Episodes`;
+    
   }}
 
   function searchText(cardList) {
   let searchInput = document.querySelector(".search")
+  
   searchInput.addEventListener("keyup", (event) => {
   let searchValue = event.target.value.toLowerCase();
   cardList.forEach((item) => {
@@ -40,7 +43,13 @@ function makePageForEpisodes(episodeList) {
       item.style.display = "none";
     }
   })
+
+    let numberOfEpisodes = document.querySelector(".numberOfEpisodes");
+
+    let numberOfMatchingEpisode = cardList.filter((item) => item.style.display == "block")
+    numberOfEpisodes.innerText = `Displaying ${numberOfMatchingEpisode.length}/${cardList.length} Episodes`;
   })
+
   }
 
 window.onload = setup;
