@@ -1,3 +1,22 @@
 #root {
-  color: red;
+  background-color: rgb(248, 246, 246);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto auto auto;
+}
+
+#contenar {
+  background-color: rgb(243, 250, 255);
+  padding: 50px;
+  border: 1px black solid;
+  width: 300px;
+}
+
+#header-episode {
+  text-align: center;
+  padding-top: 30px;
+  border: 1px black solid;
+  width: 230px;
+  height: 50px;
+  border-radius: 8px;
 }
