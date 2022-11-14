@@ -3,7 +3,6 @@ const searchInput = document.querySelector(".search");
 function setup() {
   let url = "https://api.tvmaze.com/shows/82/episodes";
   fetch(url).then(rep=> rep.json()).then(data=> makePageForEpisodes(data));
-
 }
 
 function makePageForEpisodes(episodeList) {
@@ -29,14 +28,14 @@ function makePageForEpisodes(episodeList) {
     let numberOfEpisodes = document.querySelector(".numberOfEpisodes");
     numberOfEpisodes.innerText = `Search in ${cardList.length} Episodes`;
     
-    
   }
+  let cardList1 = [...document.querySelectorAll("#containerStyle")]
   let titlesOfEpisodes = [...document.querySelectorAll("#header-episode")]
-  selectEpisodesOfTheShow(titlesOfEpisodes);
+  selectEpisodesOfTheShow(titlesOfEpisodes, cardList1);
 }
     // Add an Episode Selector
 
-      function selectEpisodesOfTheShow (cardList) {
+      function selectEpisodesOfTheShow (cardList, cardList1) {
         let selectEpisodes = document.getElementById("selectEpisodes");
         
         for (let i = 0; i < cardList.length; i++) {
@@ -44,6 +43,18 @@ function makePageForEpisodes(episodeList) {
           selectEpisode.innerText= cardList[i].innerText;
           selectEpisodes.appendChild(selectEpisode);
         }
+     
+        selectEpisodes.addEventListener("change", (va) => {
+        let value = va.target.value;
+        
+        cardList1.forEach((item) => {
+          if(item.innerText.includes(value)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        })
+      })
         
 }
 
