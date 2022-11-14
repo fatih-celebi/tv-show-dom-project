@@ -1,9 +1,16 @@
 const searchInput = document.querySelector(".search");
 
 function setup() {
-  let url = "https://api.tvmaze.com/shows/82/episodes";
-  fetch(url).then(rep=> rep.json()).then(data=> makePageForEpisodes(data));
+  let url = "https://api.tvmaze.com/shows/82/episodesaa";
+  fetch(url).then(rep=> rep.json()).then(data=> makePageForEpisodes(data)).catch(err=>displayError(err));
+
+    function displayError(err) {
+    let errorText = document.getElementById("error-text");
+    console.log(errorText);
+    }
 }
+
+
 
 function makePageForEpisodes(episodeList) {
 
