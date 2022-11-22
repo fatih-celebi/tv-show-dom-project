@@ -2,9 +2,9 @@
   background-color: rgb(248, 246, 246);
   display: grid;
   gap: 12px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-#containerStyle{
+#container{
   background-color: rgb(248, 246, 246);
 }
 #header-episode {
